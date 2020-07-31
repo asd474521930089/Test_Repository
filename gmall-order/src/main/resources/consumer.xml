@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo
+       http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!-- 定义消费者应用名-->
+    <dubbo:application name="gmall-order"/>
+    <!-- 指定zookeeper的地址 -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <!-- 指定订阅微服务的接口类型 -->
+    <dubbo:reference id="userService"  interface="cn.sy.service.UserService"/>
+
+    <context:component-scan base-package="cn.sy.service.imp"/>
+</beans>

@@ -1,0 +1,22 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo
+       http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!-- 为当前提供取一个名字 -->
+    <dubbo:application name="gmall-user"/>
+    <!-- 指向注册中心的地址 -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <!-- 使用dubbo协议，将服务暴露在20880端口 -->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!--实例化暴露的服务对象 -->
+    <bean id="userServiceImp" class="cn.sy.service.imp.UserServiceImp"/>
+    <!-- 指定暴露的服务实例和对应的接口类型 -->
+    <dubbo:service interface="cn.sy.service.UserService" ref="userServiceImp"/>
+</beans>
+
+
+        <!--UserService userService=new UserServiceImp();-->
