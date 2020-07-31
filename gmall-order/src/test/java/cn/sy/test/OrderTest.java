@@ -12,7 +12,7 @@ public class OrderTest {
 
         OrderServiceImp bean = context.getBean(OrderServiceImp.class);
         bean.createOrders();
-
+        System.out.printf("111");
 
         System.in.read(); //读取字符
     }
